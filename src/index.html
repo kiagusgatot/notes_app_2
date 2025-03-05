@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="new-style.css">
+</head>
+<body>
+    <header>
+        <h1>Notes App</h1>
+    </header>
+
+    <main class="container">
+        <section class="notes-form">
+            <h2>Add New Note</h2>
+            <form id="addNoteForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        required 
+                        minlength="3"
+                        maxlength="50"
+                        data-validation="title"
+                        placeholder="Enter title"
+                    >
+                    <span class="validation-message"></span>
+                </div>
+                <div class="form-group">
+                    <label for="body">Content</label>
+                    <textarea 
+                        id="body" 
+                        name="body" 
+                        required 
+                        minlength="10"
+                        maxlength="500"
+                        data-validation="body"
+                        placeholder="Enter content"
+                    ></textarea>
+                    <span class="validation-message"></span>
+                </div>
+                <button type="submit">Add Note</button>
+            </form>
+        </section>
+
+        <section class="notes-container">
+            <h2>Your Notes</h2>
+            <div class="notes-grid" id="notesGrid"></div>
+        </section>
+    </main>
+
+    <template id="note-template">
+        <note-card class="note-card">
+            <h3 slot="title"></h3>
+            <p slot="body"></p>
+            <p slot="date">Created at: <span class="created-at"></span></p>
+            <div slot="actions">
+                <button class="delete-btn">Delete</button>
+                <button class="archive-btn">Archive</button>
+            </div>
+        </note-card>
+    </template>
+
+    <script src="index.js"></script>
+</body>
+</html>
